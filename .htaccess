@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Check if the requested URL does not correspond to an existing directory
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Check if the requested URL does not correspond to an existing file
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Rewrite the URL to pass it as a parameter to index.php
+RewriteRule ^(.+)$ index.php?url=$1
+

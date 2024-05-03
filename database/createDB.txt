@@ -1,0 +1,49 @@
+-- Tạo bảng CATEGORY
+CREATE TABLE CATEGORY (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    date_created DATETIME NOT NULL
+);
+
+-- Tạo bảng TASK
+CREATE TABLE TASK (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    start_date DATE,
+    due_date DATE,
+    finish_date DATE,
+    status VARCHAR(50),
+    category_id INT,
+    FOREIGN KEY (category_id) REFERENCES CATEGORY(id)
+);
+
+
+-- Thêm dữ liệu vào bảng CATEGORY
+INSERT INTO CATEGORY (name, date_created) VALUES
+('Personal', NOW()),
+('Team', NOW()),
+('Habit', NOW());
+
+-- Thêm dữ liệu vào bảng TASK với status là done, in-progress, plan
+INSERT INTO TASK (name, description, start_date, due_date, finish_date, status, category_id) VALUES
+('Task 1', 'Description for Task 1', '2024-04-01', '2024-04-05', '2024-04-04', 'done', 1),
+('Task 2', 'Description for Task 2', '2024-04-02', '2024-04-06', '2024-04-05', 'done', 1),
+('Task 3', 'Description for Task 3', '2024-04-03', '2024-04-07', '2024-04-06', 'done', 1),
+('Task 4', 'Description for Task 4', '2024-04-04', '2024-04-08', '2024-04-07', 'done', 1),
+('Task 5', 'Description for Task 5', '2024-04-05', '2024-04-09', NULL, 'in-progress', 1),
+('Task 6', 'Description for Task 6', '2024-04-06', '2024-04-10', NULL, 'in-progress', 1),
+('Task 7', 'Description for Task 7', '2024-04-07', '2024-04-11', NULL, 'in-progress', 2),
+('Task 8', 'Description for Task 8', '2024-04-08', '2024-04-12', NULL, 'in-progress', 2),
+('Task 9', 'Description for Task 9', '2024-04-09', '2024-04-13', NULL, 'plan', 2),
+('Task 10', 'Description for Task 10', '2024-04-10', '2024-04-14', NULL, 'plan', 2),
+('Task 11', 'Description for Task 11', '2024-04-11', '2024-04-15', NULL, 'plan', 3),
+('Task 12', 'Description for Task 12', '2024-04-12', '2024-04-16', NULL, 'plan', 3),
+('Task 13', 'Description for Task 13', '2024-04-13', '2024-04-17', NULL, 'plan', 3),
+('Task 14', 'Description for Task 14', '2024-04-14', '2024-04-18', NULL, 'plan', 3),
+('Task 15', 'Description for Task 15', '2024-04-15', '2024-04-19', NULL, 'plan', 3),
+('Task 16', 'Description for Task 16', '2024-04-16', '2024-04-20', NULL, 'plan', 3),
+('Task 17', 'Description for Task 17', '2024-04-17', '2024-04-21', NULL, 'plan', 3),
+('Task 18', 'Description for Task 18', '2024-04-18', '2024-04-22', NULL, 'plan', 3),
+('Task 19', 'Description for Task 19', '2024-04-19', '2024-04-23', NULL, 'plan', 3),
+('Task 20', 'Description for Task 20', '2024-04-20', '2024-04-24', NULL, 'plan', 3);
